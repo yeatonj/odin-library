@@ -21,12 +21,11 @@ body {
     display: grid;
     grid-template-columns: 100px 1fr 100px;
     grid-template-rows: 60px 1fr 40px;
-    height: 100vh;
+    height: auto;
 }
 
 .header, .footer {
     background-color: var(--primary-one);
-    
 }
 
 .header {
@@ -37,7 +36,7 @@ body {
 
     display: flex;
     align-items: center;
-    color: var(--primary-two);
+    color: black;
     box-shadow: 0px 2px 2px black;
     font-size: x-large;
     justify-content: space-between;
@@ -64,7 +63,7 @@ body {
 }
 
 .footer > * {
-    color: var(--primary-two);
+    color: black;
     text-decoration: none;
 }
 
@@ -79,6 +78,7 @@ body {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
     padding-top: 30px;
+    padding-bottom: 20px;
 }
 
 .book-card {
