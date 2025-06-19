@@ -1,0 +1,30 @@
+body {
+    margin: 0px;
+}
+
+.container-main {
+    background-color: cadetblue;
+    display: grid;
+    grid-template-columns: 100px 1fr 100px;
+    grid-template-rows: 40px 1fr 40px;
+    height: 100vh;
+}
+
+.header, .footer {
+    background-color: brown;
+}
+
+.header {
+    grid-row: 1 / 2;
+    grid-column: 1 / 4;
+}
+
+.footer {
+    grid-row: 3 / 4;
+    grid-column: 1 / 4;
+}
+
+.container-books {
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+}
