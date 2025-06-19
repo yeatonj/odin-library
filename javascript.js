@@ -13,10 +13,6 @@ function Book(title, author, pageCount, read) {
     }
 }
 
-function addButtonPush() {
-    addBookToLibrary("A great book", "It's a me!", 132, true);
-}
-
 function addBookToLibrary(title, author, pageCount, read) {
     myLibrary.push(new Book(title, author, pageCount, read));
     displayBooks();
@@ -32,9 +28,7 @@ function readToggle(id) {
     }
     // find and toggle in html as well
     const searchStr = '[data-toggle-id=\"' + id +'\"]';
-    console.log(searchStr);
     const button = document.querySelector(searchStr);
-    console.log(button);
     if (button.textContent === "Read") {
         button.textContent = "Unread";
         button.classList.remove("read");
@@ -53,7 +47,6 @@ function displayBooks() {
         bookContainer.removeChild(bookContainer.firstChild);
     }
     for (const book of myLibrary) {
-        console.log(book.info());
         displayBook(bookContainer, book);
     }
 }
@@ -121,23 +114,38 @@ function removeBook(id) {
 function setupDialog() {
     // Add the add button functionality
     const addButton = document.querySelector(".add");
-    addButton.addEventListener("click", addButtonPush);
+
+    const titleInput = document.querySelector(".title-input");
+    const authorInput = document.querySelector(".author-input");
+    const pagesInput = document.querySelector(".pages-input");
+    const readInput = document.querySelector(".read-input");
 
     const dialog = document.querySelector("dialog");
-    const closeButton = document.querySelector("dialog button");
+    const cancel = document.querySelector("#cancelBtn");
 
-    // Bind show and close buttons
+    // Bind add button buttons
     addButton.addEventListener("click", () => {
+        titleInput.value = "";
+        authorInput.value = "";
+        pagesInput.value = 0;
         dialog.showModal();
     });
-    closeButton.addEventListener("click", () => {
-        dialog.close();
-    });
-}
 
-// Add a few dummy books and log them
-for (var i = 0; i < 5; i++) {
-    addBookToLibrary("test " + i, "author " + i, i*100, false);
+    // Add confirm button behavior
+    cancel.addEventListener("click", (event) => {
+        event.preventDefault();
+        dialog.requestClose(); // Have to send the select box value here.
+        
+    });
+
+    // And add final behavior
+    dialog.addEventListener("close", (e) => {
+        if (dialog.returnValue === "confirm") {
+            addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, readInput.checked);
+        }
+    });
+
+
 }
 
 setupDialog();

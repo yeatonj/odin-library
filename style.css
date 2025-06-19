@@ -166,3 +166,39 @@ button.remove {
     font-weight: bolder;
     color: var(--secondary-two);
 }
+
+dialog {
+    background-color: var(--secondary-one);
+    text-align: center;
+}
+
+.form-inputs {
+    display: grid;
+    gap: 10px;
+}
+
+.form-inputs div {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.form-inputs button {
+    background-color: var(--primary-one);
+    border-radius: 10px;
+    border: none;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-family: "Rosarivo", cursive;
+}
+
+.form-inputs input {
+    background-color: var(--secondary-two);
+    border-radius: 10px;
+    border: none;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 7px;
+    font-family: "Rosarivo", cursive;
+}
+

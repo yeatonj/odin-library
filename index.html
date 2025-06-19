@@ -40,10 +40,33 @@
     </div>
 
     <dialog>
-        <button autofocus>Close</button>
-        <p>This modal dialog has a groovy backdrop!</p>
+        <h2>Add a Book!</h2>
+        <form>
+            <div class="form-inputs">
+                <div>
+                    <label for="title">Title:</label>
+                    <input type="text" name="title" id="title" class="title-input" required>
+                </div>
+                <div>
+                    <label for="author">Author:</label>
+                    <input type="text" name="author" id="author" class="author-input" required>
+                </div>
+                <div>
+                    <label for="pages">Page Count:</label>
+                    <input type="number" name="pages" id="pages" class="pages-input" required>
+                </div>
+                <div>
+                    <label for="read">Already Read?</label>
+                    <input type="checkbox" name="read" id="read" class="read-input">
+                </div>
+                <div>
+                    <button id="confirmBtn" value="confirm" formmethod="dialog">Confirm</button>
+                    <!-- Triggers a close event -->
+                    <button id="cancelBtn" value="cancel" formmethod="dialog">Cancel</button>
+                </div>
+            </div>
+        </form>
     </dialog>
-    <button>Show the dialog</button>
 
     <script src="javascript.js"></script>
 </body>
