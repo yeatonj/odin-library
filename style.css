@@ -21,7 +21,7 @@ body {
     display: grid;
     grid-template-columns: 100px 1fr 100px;
     grid-template-rows: 60px 1fr 40px;
-    height: auto;
+    min-height: 100vh;
 }
 
 .header, .footer {

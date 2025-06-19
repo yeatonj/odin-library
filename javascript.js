@@ -43,6 +43,7 @@ function displayBook(container, book) {
     remButton.classList.add("remove");
     remButton.textContent = "\u00D7";
     remButton.dataset.id = book.id;
+    remButton.addEventListener("click", () => removeBook(remButton.dataset.id));
     const toggles = document.createElement("div");
     toggles.classList.add("toggles");
     toggles.appendChild(readButton);
@@ -80,9 +81,10 @@ function removeBook(id) {
     for (var i = 0; i < myLibrary.length; i++) {
         if (myLibrary[i].id === id) {
             myLibrary.splice(i, 1);
+            break;
         }
-        return;
     }
+    displayBooks();
 }
 
 // Add a few dummy books and log them
