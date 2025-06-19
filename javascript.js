@@ -17,6 +17,30 @@ function addBookToLibrary(title, author, pageCount, read) {
     myLibrary.push(new Book(title, author, pageCount, read));
 }
 
+function readToggle(id) {
+    // Find the book and toggle it
+    for (var i = 0; i < myLibrary.length; i++) {
+        if (myLibrary[i].id === id) {
+            myLibrary[i].read = !myLibrary[i].read;
+            break;
+        }
+    }
+    // find and toggle in html as well
+    const searchStr = '[data-toggle-id=\"' + id +'\"]';
+    console.log(searchStr);
+    const button = document.querySelector(searchStr);
+    console.log(button);
+    if (button.textContent === "Read") {
+        button.textContent = "Unread";
+        button.classList.remove("read");
+        button.classList.add("unread");
+    } else {
+        button.textContent = "Read";
+        button.classList.remove("unread");
+        button.classList.add("read");
+    }
+}
+
 function displayBooks() {
     const bookContainer = document.querySelector(".container-books");
     // Remove all current books
@@ -39,6 +63,8 @@ function displayBook(container, book) {
         readButton.classList.add("unread");
         readButton.textContent = "Unread"
     }
+    readButton.dataset.toggleId = book.id;
+    readButton.addEventListener("click", () => readToggle(readButton.dataset.toggleId));
     const remButton = document.createElement("button")
     remButton.classList.add("remove");
     remButton.textContent = "\u00D7";
