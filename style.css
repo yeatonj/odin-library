@@ -16,6 +16,11 @@ body {
     --secondary-two: #E7F2E4;
 }
 
+::backdrop {
+    background-color: black;
+    opacity: 0.5;
+  }
+
 .container-main {
     background-color: var(--secondary-two);
     display: grid;
@@ -49,6 +54,10 @@ body {
     border: 1px solid black;
     background-color: var(--secondary-one);
     font-size: larger;
+}
+
+.header button:hover {
+    background-color: green;
 }
 
 .footer {

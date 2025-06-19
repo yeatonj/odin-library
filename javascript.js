@@ -13,8 +13,13 @@ function Book(title, author, pageCount, read) {
     }
 }
 
+function addButtonPush() {
+    addBookToLibrary("A great book", "It's a me!", 132, true);
+}
+
 function addBookToLibrary(title, author, pageCount, read) {
     myLibrary.push(new Book(title, author, pageCount, read));
+    displayBooks();
 }
 
 function readToggle(id) {
@@ -113,9 +118,28 @@ function removeBook(id) {
     displayBooks();
 }
 
+function setupDialog() {
+    // Add the add button functionality
+    const addButton = document.querySelector(".add");
+    addButton.addEventListener("click", addButtonPush);
+
+    const dialog = document.querySelector("dialog");
+    const closeButton = document.querySelector("dialog button");
+
+    // Bind show and close buttons
+    addButton.addEventListener("click", () => {
+        dialog.showModal();
+    });
+    closeButton.addEventListener("click", () => {
+        dialog.close();
+    });
+}
+
 // Add a few dummy books and log them
 for (var i = 0; i < 5; i++) {
     addBookToLibrary("test " + i, "author " + i, i*100, false);
 }
+
+setupDialog();
 
 displayBooks();
